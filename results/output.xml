@@ -1,49 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.2 (Python 3.10.0 on win32)" generated="20220207 20:49:30.262" rpa="false" schemaversion="2">
-<suite id="s1" name="Test-Case" source="C:\Estudo\teste\Robotframework_aula_01_22\test-case">
-<suite id="s1-s1" name="AbrirGoogle" source="C:\Estudo\teste\Robotframework_aula_01_22\test-case\AbrirGoogle.robot">
-<test id="s1-s1-t1" name="Test case 1 - abrir navegador no google">
-<kw name="Dado que eu abra o navegador" library="home">
+<robot generator="Robot 4.1.3 (Python 3.10.1 on win32)" generated="20220324 15:01:30.500" rpa="false" schemaversion="2">
+<suite id="s1" name="pesquisarProduto" source="C:\Teste robot\Robotframework_aula_01_22\test-case\pesquisarProduto.robot">
+<kw name="Que Esteja no site http://automationpractice.com/index.php" library="automationHome" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
-<arg>url:</arg>
-<arg>${NAVEGADOR}</arg>
+<arg>http://automationpractice.com/index.php</arg>
+<arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220207 20:49:30.570" level="INFO">Opening browser 'chrome' to base url 'url:'.</msg>
-<status status="PASS" starttime="20220207 20:49:30.570" endtime="20220207 20:49:32.182"/>
+<msg timestamp="20220324 15:01:31.105" level="INFO">Opening browser 'chrome' to base url 'http://automationpractice.com/index.php'.</msg>
+<status status="PASS" starttime="20220324 15:01:31.104" endtime="20220324 15:01:40.113"/>
 </kw>
-<status status="PASS" starttime="20220207 20:49:30.569" endtime="20220207 20:49:32.182"/>
+<status status="PASS" starttime="20220324 15:01:31.104" endtime="20220324 15:01:40.114"/>
 </kw>
-<kw name="Quando a pagina google e exibida" library="home">
-<kw name="Go To" library="SeleniumLibrary">
-<arg>http://google.com.br</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20220207 20:49:32.184" level="INFO">Opening url 'http://google.com.br'</msg>
-<status status="PASS" starttime="20220207 20:49:32.184" endtime="20220207 20:49:33.676"/>
+<test id="s1-t1" name="Cenário 1: Pesquisar um produto existente">
+<kw name="Pesquiso um produto em Search &quot;T-SHIRT&quot;" library="automationHome" sourcename="Pesquiso um produto em Search &quot;${produto}&quot;">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:40.120" level="INFO">Clicking element '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:40.119" endtime="20220324 15:01:40.244"/>
 </kw>
-<status status="PASS" starttime="20220207 20:49:32.183" endtime="20220207 20:49:33.676"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<arg>${produto}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:40.245" level="INFO">Typing text 'T-SHIRT' into text field '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:40.244" endtime="20220324 15:01:40.388"/>
 </kw>
-<kw name="Então o navegador é fechado" library="home">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20220207 20:49:33.677" endtime="20220207 20:49:35.957"/>
+<status status="PASS" starttime="20220324 15:01:40.118" endtime="20220324 15:01:40.388"/>
 </kw>
-<status status="PASS" starttime="20220207 20:49:33.676" endtime="20220207 20:49:35.957"/>
+<kw name="Pesquiso o produto" library="automationHome">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@name="submit_search"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:40.393" level="INFO">Clicking element '//*[@name="submit_search"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:40.392" endtime="20220324 15:01:42.987"/>
 </kw>
-<status status="PASS" starttime="20220207 20:49:30.568" endtime="20220207 20:49:35.958"/>
+<status status="PASS" starttime="20220324 15:01:40.391" endtime="20220324 15:01:42.988"/>
+</kw>
+<kw name="Site deverá trazer os produtos pesquisados" library="automationHome">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>//*[@class="heading-counter"]</arg>
+<arg>1 result has been found.</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220324 15:01:42.990" level="INFO">Verifying element '//*[@class="heading-counter"]' contains exact text '1 result has been found.'.</msg>
+<status status="PASS" starttime="20220324 15:01:42.990" endtime="20220324 15:01:43.025"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:42.989" endtime="20220324 15:01:43.025"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:40.114" endtime="20220324 15:01:43.026"/>
 </test>
-<status status="PASS" starttime="20220207 20:49:30.294" endtime="20220207 20:49:35.960"/>
-</suite>
-<status status="PASS" starttime="20220207 20:49:30.265" endtime="20220207 20:49:35.964"/>
+<test id="s1-t2" name="Cenário 2: Pesquisar um produto inexistente">
+<kw name="Pesquiso um produto em Search &quot;T-SHIRTTG&quot;" library="automationHome" sourcename="Pesquiso um produto em Search &quot;${produto}&quot;">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:43.030" level="INFO">Clicking element '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:43.029" endtime="20220324 15:01:43.092"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<arg>${produto}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:43.093" level="INFO">Typing text 'T-SHIRTTG' into text field '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:43.093" endtime="20220324 15:01:43.249"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:43.029" endtime="20220324 15:01:43.249"/>
+</kw>
+<kw name="Pesquiso o produto" library="automationHome">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@name="submit_search"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:43.251" level="INFO">Clicking element '//*[@name="submit_search"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:43.251" endtime="20220324 15:01:44.301"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:43.250" endtime="20220324 15:01:44.302"/>
+</kw>
+<kw name="deverá retornar a mensagem: &quot;No results were found for your search &quot;T-SHIRTTG&quot;&quot;" library="automationHome" sourcename="deverá retornar a mensagem: &quot;${mensagem}&quot;">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>//*[@class="alert alert-warning"]</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220324 15:01:44.304" level="INFO">Verifying element '//*[@class="alert alert-warning"]' contains exact text 'No results were found for your search "T-SHIRTTG"'.</msg>
+<status status="PASS" starttime="20220324 15:01:44.303" endtime="20220324 15:01:44.338"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:44.303" endtime="20220324 15:01:44.339"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:43.027" endtime="20220324 15:01:44.339"/>
+</test>
+<test id="s1-t3" name="Cenário 3: Pesquisar um produto em branco">
+<kw name="Pesquiso um produto em Search &quot;&quot;" library="automationHome" sourcename="Pesquiso um produto em Search &quot;${produto}&quot;">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:44.342" level="INFO">Clicking element '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:44.342" endtime="20220324 15:01:44.405"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${HOME_INPUT_SEARCH}</arg>
+<arg>${produto}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:44.406" level="INFO">Typing text '' into text field '//*[@id="search_query_top"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:44.406" endtime="20220324 15:01:44.488"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:44.341" endtime="20220324 15:01:44.489"/>
+</kw>
+<kw name="Pesquiso o produto" library="automationHome">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@name="submit_search"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:44.491" level="INFO">Clicking element '//*[@name="submit_search"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:44.490" endtime="20220324 15:01:45.573"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:44.489" endtime="20220324 15:01:45.573"/>
+</kw>
+<kw name="deverá retornar a mensagem: &quot;Please enter a search keyword&quot;" library="automationHome" sourcename="deverá retornar a mensagem: &quot;${mensagem}&quot;">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>//*[@class="alert alert-warning"]</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220324 15:01:45.576" level="INFO">Verifying element '//*[@class="alert alert-warning"]' contains exact text 'Please enter a search keyword'.</msg>
+<status status="PASS" starttime="20220324 15:01:45.575" endtime="20220324 15:01:45.616"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:45.574" endtime="20220324 15:01:45.616"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:44.340" endtime="20220324 15:01:45.617"/>
+</test>
+<test id="s1-t4" name="Cenário 4: Logar">
+<kw name="Tenha login e senha cadastrados e clique em Sign in" library="automationHome">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@class="login"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:45.619" level="INFO">Clicking element '//*[@class="login"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:45.619" endtime="20220324 15:01:47.684"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:45.619" endtime="20220324 15:01:47.684"/>
+</kw>
+<kw name="Realizar o Sign in" library="automationHome">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>//*[@id="login_form"]/h3</arg>
+<arg>ALREADY REGISTERED?</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220324 15:01:47.686" level="INFO">Verifying element '//*[@id="login_form"]/h3' contains exact text 'ALREADY REGISTERED?'.</msg>
+<status status="PASS" starttime="20220324 15:01:47.685" endtime="20220324 15:01:47.720"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="email"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:47.720" level="INFO">Clicking element '//*[@id="email"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:47.720" endtime="20220324 15:01:47.786"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//*[@id="email"]</arg>
+<arg>teste@robot.com.br</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:47.786" level="INFO">Typing text 'teste@robot.com.br' into text field '//*[@id="email"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:47.786" endtime="20220324 15:01:47.925"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="passwd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:47.926" level="INFO">Clicking element '//*[@id="passwd"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:47.926" endtime="20220324 15:01:48.014"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>//*[@id="passwd"]</arg>
+<arg>12345</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:48.015" level="INFO">Typing password into text field '//*[@id="passwd"]'.</msg>
+<msg timestamp="20220324 15:01:48.054" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220324 15:01:48.098" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220324 15:01:48.014" endtime="20220324 15:01:48.098"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="SubmitLogin"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:48.099" level="INFO">Clicking element '//*[@id="SubmitLogin"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:48.098" endtime="20220324 15:01:50.529"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:47.685" endtime="20220324 15:01:50.530"/>
+</kw>
+<kw name="Sistema deverá logar com sucesso e cair na tela My account" library="automationHome">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>//*[@class="navigation_page"]</arg>
+<arg>My account</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220324 15:01:50.532" level="INFO">Verifying element '//*[@class="navigation_page"]' contains exact text 'My account'.</msg>
+<status status="PASS" starttime="20220324 15:01:50.531" endtime="20220324 15:01:50.580"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@class="logout"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220324 15:01:50.581" level="INFO">Clicking element '//*[@class="logout"]'.</msg>
+<status status="PASS" starttime="20220324 15:01:50.580" endtime="20220324 15:01:54.414"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:50.530" endtime="20220324 15:01:54.415"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:45.618" endtime="20220324 15:01:54.415"/>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220324 15:01:54.418" endtime="20220324 15:01:56.735"/>
+</kw>
+<status status="PASS" starttime="20220324 15:01:30.504" endtime="20220324 15:01:56.735"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Test-Case">Test-Case</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="AbrirGoogle">Test-Case.AbrirGoogle</stat>
+<stat pass="4" fail="0" skip="0" id="s1" name="pesquisarProduto">pesquisarProduto</stat>
 </suite>
 </statistics>
 <errors>
